@@ -204,14 +204,24 @@
 
   .gift-image {
     width: 100%;
-    height: 140px;
-    background: var(--cream);
+    height: 180px;
+    background: #fff;
+    border: 1px solid #f0ebe3;
     border-radius: 10px;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.5rem;
+    overflow: hidden;
+  }
+
+  .gift-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .gift-name {
@@ -459,6 +469,14 @@
           <div class="activity-note">A day in Baltimore watching the sharks and rays. Arafa rides free — the tickets cover mom &amp; dad.</div>
         </div>
       </div>
+      <div class="activity-card">
+        <div class="activity-emoji">🍓</div>
+        <div class="activity-body">
+          <div class="activity-name">Strawberry picking at Great Country Farms</div>
+          <div class="activity-price">~$17/adult · berries sold separately · <a href="https://greatcountryfarms.com/" target="_blank" rel="noopener">see pricing</a></div>
+          <div class="activity-note">A spring morning on the farm picking strawberries as a family. Arafa gets in free — adult tickets cover mom &amp; dad.</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -496,49 +514,77 @@
     {
       name: "Lovevery 'The Realist' Play Kit",
       price: "$120",
-      emoji: "🧩",
+      image: "https://images.ctfassets.net/0sea1vycfyqy/3t6uv7glweHHEap3rvZ6Bd/a123b7cde0464e6f9cd81dad1be2afa0/US_AU_Lovevery-VKS-Playkit-TheRealist-ISO-130-April2021_web__1_.png",
       url: "https://lovevery.com/products/the-play-kits-the-realist",
       claimed: false
     },
     {
       name: "Lovevery 'Think It Out' Mini Kit",
       price: "~$50",
-      emoji: "🧠",
+      image: "https://images.ctfassets.net/0sea1vycfyqy/2o6JRJrreecum2RoI2qYpB/18260dddb34202ab3dfc77e2eb3359e2/5__US_UK_.jpg",
       url: "https://lovevery.com/products/mini-kits-think-it-out",
+      claimed: false
+    },
+    {
+      name: "Lovevery Music Set",
+      price: "~$90",
+      image: "https://images.ctfassets.net/0sea1vycfyqy/1gQ7WL8dagt25VwN36Yrte/3a429d6e0acbc40d0c689fd33e3cf5d1/MusicSet_FlayLay.png",
+      url: "https://lovevery.com/products/the-music-set",
+      claimed: false
+    },
+    {
+      name: "Little People Hot Wheels Spiral Speedway",
+      price: "~$40",
+      image: "https://target.scene7.com/is/image/Target/GUEST_60171bef-215a-4e8d-9ecc-863ed3938417?wid=800&hei=800&fmt=webp",
+      url: "https://www.target.com/p/little-people-hot-wheels-spiral-speedway/-/A-89960162",
+      claimed: false
+    },
+    {
+      name: "Melissa & Doug My First Activity Book",
+      price: "~$15",
+      image: "https://m.media-amazon.com/images/I/71hGQ1lgSlL._AC_SL1500_.jpg",
+      url: "https://www.amazon.com/dp/B07ZR211K1",
+      claimed: false
+    },
+    {
+      name: "Melissa & Doug Wooden Building Blocks (100 pc)",
+      price: "~$25",
+      image: "https://m.media-amazon.com/images/I/71jVEjU17nL._AC_SL1500_.jpg",
+      url: "https://www.amazon.com/dp/B000068CKY",
       claimed: false
     },
     {
       name: "Toddler Sensory Busy Board",
       price: "~$35",
-      emoji: "🎛️",
+      image: "https://m.media-amazon.com/images/I/81CkCZpqN4L._AC_SL1500_.jpg",
       url: "https://www.amazon.com/dp/B0DTHGN645",
       claimed: false
     },
     {
       name: "Montessori Activity Toy",
       price: "~$30",
-      emoji: "🎯",
+      image: "https://m.media-amazon.com/images/I/71EPwo05VCL._AC_SL1500_.jpg",
       url: "https://www.amazon.com/dp/B0CNJYFN5W",
       claimed: false
     },
     {
       name: "Fat Brain PlayTab Activity Board",
       price: "~$46",
-      emoji: "🧷",
+      image: "https://m.media-amazon.com/images/I/51b5KiqQ3nL._AC_SL1500_.jpg",
       url: "https://www.amazon.com/dp/B0DVVSFXBL",
       claimed: false
     },
     {
       name: "Fat Brain PlayTab Go",
       price: "~$30",
-      emoji: "🎒",
+      image: "https://d1jqecz1iy566e.cloudfront.net/extralarge/fa512.jpg",
       url: "https://www.fatbraintoys.com/toy_companies/fat_brain_toy_co/playtab_go.cfm",
       claimed: false
     },
     {
       name: "Realistic Baby Remote Toy",
-      price: "~$20",
-      emoji: "📺",
+      price: "~$13",
+      image: "https://m.media-amazon.com/images/I/81-ishdC1-L._AC_SL1500_.jpg",
       url: "https://www.amazon.com/dp/B0CCRWL6WW",
       claimed: false
     }
@@ -551,7 +597,9 @@
 
   grid.innerHTML = GIFTS.map(g => `
     <div class="gift-card${g.claimed ? ' claimed' : ''}">
-      <div class="gift-image">${g.emoji}</div>
+      <div class="gift-image">
+        <img src="${escapeAttr(g.image)}" alt="${escapeAttr(g.name)}" loading="lazy" referrerpolicy="no-referrer">
+      </div>
       <div class="gift-name">${escapeHtml(g.name)}${g.claimed ? ' ✓' : ''}</div>
       <div class="gift-price">${escapeHtml(g.price)}${g.claimed ? ' · claimed' : ''}</div>
       <div class="gift-actions">
