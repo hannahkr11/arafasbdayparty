@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arafa is Turning One!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf8f1;
+    --warm-red: #c85a3a;
+    --soft-red: #e8836a;
+    --mustard: #e8b84a;
+    --forest: #4a6b4a;
+    --ink: #2b2420;
+    --muted: #6b6159;
+    --shadow: rgba(43, 36, 32, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+    position: relative;
+  }
+
+  .floaty {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.35;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .floaty:nth-child(1) { top: 8%; left: 5%; animation-delay: 0s; }
+  .floaty:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; font-size: 1.8rem; }
+  .floaty:nth-child(3) { top: 55%; left: 3%; animation-delay: 3s; font-size: 2rem; }
+  .floaty:nth-child(4) { top: 75%; right: 5%; animation-delay: 2s; }
+  .floaty:nth-child(5) { top: 40%; right: 12%; animation-delay: 4s; font-size: 1.5rem; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(8deg); }
+  }
+
+  header {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .overline {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-red);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  h1 .one {
+    color: var(--warm-red);
+    display: inline-block;
+    transform: rotate(-5deg);
+    font-size: 1.2em;
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    color: var(--forest);
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+
+  .emoji-row {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    letter-spacing: 0.5rem;
+  }
+
+  .intro-card {
+    background: linear-gradient(135deg, #fff 0%, #fff5ee 100%);
+    border: 2px dashed var(--soft-red);
+    border-radius: 20px;
+    padding: 2.25rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .intro-card .lead {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-card p {
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .intro-card p + p { margin-top: 0.75rem; }
+
+  .donate-btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.75rem;
+    background: var(--forest);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(74, 107, 74, 0.25);
+  }
+  .donate-btn:hover {
+    background: #3a5a3a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(74, 107, 74, 0.35);
+  }
+
+  .secondary-note {
+    text-align: center;
+    margin: 2.5rem 0 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .secondary-note .divider {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .secondary-note p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .secondary-note .helper {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+  }
+
+  .wish-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .wish-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .gift-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 16px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+  }
+
+  .gift-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--shadow);
+  }
+
+  .gift-image {
+    width: 100%;
+    height: 140px;
+    background: var(--cream);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+  }
+
+  .gift-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .gift-price {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .gift-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    border: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+  }
+
+  .btn-link {
+    background: var(--cream);
+    color: var(--ink);
+    border: 1px solid #ddd;
+  }
+  .btn-link:hover { background: #f0ebe3; }
+
+  .btn-claim {
+    background: var(--warm-red);
+    color: white;
+  }
+  .btn-claim:hover { background: #b24a2d; }
+
+  .activities-section {
+    margin-top: 3rem;
+  }
+
+  .activities-heading {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .activities-heading h2 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+
+  .activities-heading p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .activity-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .activity-card {
+    background: white;
+    border-left: 4px solid var(--forest);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 16px var(--shadow);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .activity-emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .activity-body {
+    flex: 1;
+  }
+
+  .activity-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .activity-price {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .activity-price a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-decoration-color: #ddd;
+  }
+  .activity-price a:hover { color: var(--forest); }
+
+  .activity-note {
+    font-size: 0.9rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .loves-section {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 2px 16px var(--shadow);
+  }
+
+  .loves-section h2 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--warm-red);
+    margin-bottom: 0.5rem;
+  }
+
+  .loves-section .sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .loves-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .love-tag {
+    background: var(--cream);
+    border: 1px solid #e8d9c3;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .love-tag .tag-emoji {
+    margin-right: 0.35rem;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 2rem 1rem 3rem; }
+    .floaty { font-size: 1.8rem !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <span class="floaty">🍕</span>
+  <span class="floaty">🎈</span>
+  <span class="floaty">🍕</span>
+  <span class="floaty">⭐</span>
+  <span class="floaty">🎈</span>
+
+  <header>
+    <div class="overline">You're Invited</div>
+    <h1>Arafa is <span class="one">ONE!</span></h1>
+    <p class="subtitle">a little pizza party for a little guy</p>
+    <div class="emoji-row">🍕 🎉 🍕</div>
+  </header>
+
+  <div class="intro-card">
+    <p class="lead">We have everything we need and more!</p>
+    <p>In lieu of gifts, please consider donating in Arafa's honor to the <strong>Palestine Children's Relief Fund</strong>.</p>
+    <a href="https://pcrf.net/donate" target="_blank" rel="noopener" class="donate-btn">Donate to PCRF →</a>
+  </div>
+
+  <div class="secondary-note">
+    <div class="divider">· · ·</div>
+    <p>But if you <em>must</em> bring something, here are a few things Arafa would love.</p>
+    <p class="helper">Click <strong>"I'll bring this!"</strong> and let Hana or Adam know which item — we'll keep the list updated so nothing gets duplicated.</p>
+  </div>
+
+  <div class="wish-grid" id="wishGrid"></div>
+
+  <div class="activities-section">
+    <div class="activities-heading">
+      <h2>Experience gifts Arafa would love</h2>
+      <p>These are activities we'd love to do with him — want to gift one? Text Hana or Adam and we'll send our Zelle.</p>
+    </div>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="activity-emoji">🦁</div>
+        <div class="activity-body">
+          <div class="activity-name">Leesburg Animal Park day trip</div>
+          <div class="activity-price">~$40 for Arafa + mom &amp; dad · <a href="https://leesburganimalpark.com/hours-admission/" target="_blank" rel="noopener">see pricing</a></div>
+          <div class="activity-note">A favorite little zoo with goats, kangaroos, and more. We'd pick the day and go as a family.</div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-emoji">🐠</div>
+        <div class="activity-body">
+          <div class="activity-name">National Aquarium trip (2 adult tickets)</div>
+          <div class="activity-price">~$100 · <a href="https://aqua.org/visit" target="_blank" rel="noopener">see pricing</a></div>
+          <div class="activity-note">A day in Baltimore watching the sharks and rays. Arafa rides free — the tickets cover mom &amp; dad.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loves-section">
+    <h2>Other things Arafa loves</h2>
+    <p class="sub">If nothing on the list speaks to you, these are all reliable crowd-pleasers:</p>
+    <div class="loves-tags">
+      <span class="love-tag"><span class="tag-emoji">🎧</span>Tonies</span>
+      <span class="love-tag"><span class="tag-emoji">📖</span>Sandra Boynton books</span>
+      <span class="love-tag"><span class="tag-emoji">🔊</span>Board books with buttons &amp; sounds</span>
+      <span class="love-tag"><span class="tag-emoji">🐄</span>Toys that make animal noises</span>
+      <span class="love-tag"><span class="tag-emoji">🐶</span>Anything with <strong>dogs</strong></span>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Thank you for celebrating with us 🍕<br>
+    Questions? Text Hana or Adam.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CONFIG: paste your Google Form URL here                        -->
+<!-- (See SETUP.md for how to get it)                               -->
+<!-- ============================================================ -->
+<script>
+  const CLAIM_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeCSsrRbycynRpSJBwAbReTkdu6_f2cl8fRb80NWXc7YbzD3A/viewform";
+</script>
+
+<!-- ============================================================ -->
+<!-- GIFT ITEMS: edit these with real items + buy links             -->
+<!-- ============================================================ -->
+<script>
+  const GIFTS = [
+    {
+      name: "Lovevery 'The Realist' Play Kit",
+      price: "$120",
+      emoji: "🧩",
+      url: "https://lovevery.com/products/the-play-kits-the-realist",
+      claimed: false
+    },
+    {
+      name: "Lovevery 'Think It Out' Mini Kit",
+      price: "~$50",
+      emoji: "🧠",
+      url: "https://lovevery.com/products/mini-kits-think-it-out",
+      claimed: false
+    },
+    {
+      name: "Toddler Sensory Busy Board",
+      price: "~$35",
+      emoji: "🎛️",
+      url: "https://www.amazon.com/dp/B0DTHGN645",
+      claimed: false
+    },
+    {
+      name: "Montessori Activity Toy",
+      price: "~$30",
+      emoji: "🎯",
+      url: "https://www.amazon.com/dp/B0CNJYFN5W",
+      claimed: false
+    },
+    {
+      name: "Fat Brain PlayTab Activity Board",
+      price: "~$46",
+      emoji: "🧷",
+      url: "https://www.amazon.com/dp/B0DVVSFXBL",
+      claimed: false
+    },
+    {
+      name: "Fat Brain PlayTab Go",
+      price: "~$30",
+      emoji: "🎒",
+      url: "https://www.fatbraintoys.com/toy_companies/fat_brain_toy_co/playtab_go.cfm",
+      claimed: false
+    },
+    {
+      name: "Realistic Baby Remote Toy",
+      price: "~$20",
+      emoji: "📺",
+      url: "https://www.amazon.com/dp/B0CCRWL6WW",
+      claimed: false
+    }
+  ];
+</script>
+
+<script>
+  const grid = document.getElementById('wishGrid');
+  const formConfigured = CLAIM_FORM_URL && CLAIM_FORM_URL !== "YOUR_GOOGLE_FORM_URL_HERE";
+
+  grid.innerHTML = GIFTS.map(g => `
+    <div class="gift-card${g.claimed ? ' claimed' : ''}">
+      <div class="gift-image">${g.emoji}</div>
+      <div class="gift-name">${escapeHtml(g.name)}${g.claimed ? ' ✓' : ''}</div>
+      <div class="gift-price">${escapeHtml(g.price)}${g.claimed ? ' · claimed' : ''}</div>
+      <div class="gift-actions">
+        <a href="${escapeAttr(g.url)}" target="_blank" rel="noopener" class="btn btn-link">View / Buy →</a>
+        ${g.claimed
+          ? ''
+          : `<a href="${formConfigured ? escapeAttr(CLAIM_FORM_URL) : '#'}"
+                 target="_blank" rel="noopener"
+                 class="btn btn-claim"
+                 ${formConfigured ? '' : 'onclick="alert(\'Form link not set up yet \u2014 see SETUP.md\'); return false;"'}>
+               I'll bring this!
+             </a>`}
+      </div>
+    </div>
+  `).join('');
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+</script>
+
+<style>
+  .gift-card.claimed { opacity: 0.55; background: #f0ebe3; }
+  .gift-card.claimed .gift-name {
+    text-decoration: line-through;
+    text-decoration-color: var(--warm-red);
+    text-decoration-thickness: 2px;
+  }
+</style>
+
+</body>
+</html>
